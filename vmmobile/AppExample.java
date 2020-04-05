@@ -227,7 +227,7 @@ public class AppExample {
 			addSmartThing(smartThings, coordDevices, i);
 		}
 
-		readMoblityData();
+		readMoblityData(); //read smart thing mobility data from Input folder, the files has 5 column: time, direction, x,y,speed
 
 		int index;// Auxiliary
 		int myCount = 0;

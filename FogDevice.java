@@ -1549,8 +1549,13 @@ public class FogDevice extends PowerDatacenter {
 				
 				tuple.setVmId(vmId);
 				updateTimingsOnReceipt(tuple);
-
-				executeTuple(ev, tuple.getDestModuleName());
+				if (this == st.get(0).getVmLocalServerCloudlet()){
+					executeTuple(ev, tuple.getDestModuleName());
+				}
+				if (this != st.get(0).getVmLocalServerCloudlet()){
+					System.out.println("tuple migrrored");
+				}
+				//
 				/////////
 			} else {
 				if (tuple.getDestModuleName() != null) {
@@ -2121,6 +2126,11 @@ public class FogDevice extends PowerDatacenter {
 
 		smartThing.setTimeFinishDeliveryVm(CloudSim.clock());
 		MyStatistics.getInstance().countMigration();
+		//saveMigration(st);
+		printResults(
+				String.valueOf(NetworkUsageMonitor.getNetworkUsage() / CloudSim.clock()) + '\t'
+					+ String.valueOf(NetworkUsageMonitor.getNetworkUsage()) + '\t' + CloudSim.clock(),
+				"totalNetworkUsageAfterEachHandoff.txt");
 
 	}
 }

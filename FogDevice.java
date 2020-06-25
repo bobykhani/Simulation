@@ -1552,8 +1552,8 @@ public class FogDevice extends PowerDatacenter {
 				if (this == st.get(0).getVmLocalServerCloudlet()){
 					executeTuple(ev, tuple.getDestModuleName());
 				}
-				if (this != st.get(0).getVmLocalServerCloudlet()){
-					System.out.println("tuple migrrored");
+				if (this != st.get(0).getVmLocalServerCloudlet() && st.get(0).getDestinationServerCloudlet()!=null){
+					System.out.println(" tuple migrrored from " + st.get(0).getVmLocalServerCloudlet().getName() +" to "+st.get(0).getDestinationServerCloudlet().getName());
 				}
 				//
 				/////////
